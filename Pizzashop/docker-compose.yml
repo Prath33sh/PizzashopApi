@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  pizzashop_api:
+    image: ${DOCKER_REGISTRY-}pizzashop_api
+    container_name: pizzashop.api
+    build:
+      context: .
+      dockerfile: ./dockerfile
+    ports:
+      - "5000:8080"
+      - "5001:5001"
+  pizzashop_db:
+    image: postgres:latest
+    container_name: pizzashop.db
+    environment:
+      - POSTGRES_DB=pizzashop
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ../../.containers/pizzashop-db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432

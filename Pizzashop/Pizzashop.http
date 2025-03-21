@@ -1,0 +1,11 @@
+@Pizzashop_HostAddress = http://localhost:5000
+
+POST {{Pizzashop_HostAddress}}/api/order/
+Content-Type: application/json
+
+{
+    "OrderType": "DELIVERY"
+}
+
+
+###
